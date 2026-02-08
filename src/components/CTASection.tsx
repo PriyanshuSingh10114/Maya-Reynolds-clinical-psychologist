@@ -12,7 +12,7 @@ export default function CTASection() {
         className={`max-w-2xl mx-auto space-y-6 md:space-y-8 animate-on-scroll ${isVisible ? 'is-visible' : ''
           }`}
       >
-        <h2 className="font-heading text-4xl md:text-6xl text-secondary leading-tight">
+        <h2 className="font-heading text-3xl sm:text-4xl md:text-6xl text-secondary leading-tight mb-8 md:mb-12">
           Begin at your own pace.
         </h2>
 

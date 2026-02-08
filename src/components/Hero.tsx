@@ -5,20 +5,18 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useParallax } from "@/hooks/useParallax";
 
 export default function Hero() {
-  const { ref: imageRef, isVisible: imageVisible } = useScrollAnimation();
-  const { ref: textRef, isVisible: textVisible } = useScrollAnimation();
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0 });
   const { ref: parallaxRef, style: parallaxStyle } = useParallax({ speed: 0.04 });
 
   return (
-    <section className="bg-secondary overflow-hidden">
-      <div className="max-w-[var(--spacing-container)] mx-auto px-6 pt-10 md:pt-16 pb-[100px] md:pb-[140px] grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+    <section className="bg-secondary overflow-hidden" ref={ref}>
+      <div className="max-w-[var(--spacing-container)] mx-auto px-6 pt-16 md:pt-24 pb-20 md:pb-32 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
 
         {/* LEFT: IMAGE */}
         <div className="flex justify-center lg:justify-start order-2 lg:order-1">
           <div
-            ref={imageRef}
-            className={`relative w-full max-w-[340px] md:max-w-[480px] lg:max-w-[540px] aspect-[3/4] overflow-hidden rounded-t-full animate-on-scroll ${imageVisible ? 'is-visible' : ''
+            className={`relative w-full max-w-[340px] md:max-w-[480px] lg:max-w-[540px] aspect-[3/4] overflow-hidden rounded-t-full transition-all duration-1000 ease-out delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
           >
             <div
@@ -39,11 +37,9 @@ export default function Hero() {
 
         {/* RIGHT: TEXT */}
         <div
-          ref={textRef}
-          className={`text-center lg:text-left max-w-xl order-1 lg:order-2 animate-on-scroll ${textVisible ? 'is-visible' : ''
-            }`}
+          className={`text-center lg:text-left max-w-xl order-1 lg:order-2 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
-          <h1 className="font-heading text-[42px] md:text-[60px] lg:text-[68px] leading-[1.08] text-primary mb-10 md:mb-14">
+          <h1 className="font-heading text-[38px] sm:text-[48px] md:text-[60px] lg:text-[68px] leading-[1.1] text-primary mb-8 md:mb-12">
             Therapy for Anxiety, Trauma & Burnout
           </h1>
           <br />

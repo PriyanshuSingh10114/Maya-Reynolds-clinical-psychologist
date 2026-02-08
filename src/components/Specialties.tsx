@@ -42,7 +42,7 @@ export default function Specialties() {
           }`}
       >
         {/* Section Heading */}
-        <p className="text-center font-display text-4xl md:text-[3.5rem] text-primary mb-16 md:mb-[80px]">
+        <p className="text-center font-display text-3xl sm:text-4xl md:text-[3.5rem] text-primary mb-10 md:mb-16">
           Areas of Focus
         </p>
         <br />

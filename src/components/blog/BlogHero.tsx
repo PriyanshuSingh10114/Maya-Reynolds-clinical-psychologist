@@ -4,20 +4,16 @@ import Image from "next/image";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export default function BlogHero() {
-  const { ref: imageRef, isVisible: imageVisible } =
-    useScrollAnimation<HTMLDivElement>();
-  const { ref: textRef, isVisible: textVisible } =
-    useScrollAnimation<HTMLDivElement>();
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0, rootMargin: '0px' });
 
   return (
-    <section className="bg-cream pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+    <section className="bg-cream py-20 md:py-32" ref={ref}>
       <div className="max-w-[var(--spacing-container)] mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 lg:gap-x-16 gap-y-20 md:gap-y-32 items-center">
 
           {/* Image */}
           <div
-            ref={imageRef}
-            className={`relative aspect-[4/5] max-w-md mx-auto lg:mx-0 rounded-t-full overflow-hidden animate-on-scroll ${imageVisible ? "is-visible" : ""
+            className={`relative aspect-[4/5] max-w-md mx-auto lg:mx-0 rounded-t-full overflow-hidden transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
           >
             <Image
@@ -31,11 +27,9 @@ export default function BlogHero() {
 
           {/* Text */}
           <div
-            ref={textRef}
-            className={`space-y-8 animate-on-scroll ${textVisible ? "is-visible" : ""
-              }`}
+            className={`space-y-6 md:space-y-8 transition-all duration-1000 ease-out delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
-            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl text-charcoal leading-tight">
+            <h1 className="font-display text-[32px] sm:text-[48px] md:text-[64px] lg:text-[80px] text-charcoal mb-12 md:mb-20">
               Thoughts and Reflections
             </h1>
 

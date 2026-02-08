@@ -27,25 +27,25 @@ export default function FAQSection() {
   ];
 
   return (
-    <section className="bg-secondary py-16 md:py-[6vmax]">
+    <section className="bg-secondary py-16 md:py-24 lg:py-32">
       <div
-        className={`max-w-[var(--spacing-container)] mx-auto px-6 grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 md:gap-20 items-start`}
+        className="max-w-[var(--spacing-container)] mx-auto px-6 grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-20 items-start"
       >
 
         {/* LEFT — SUPPORTING VISUAL */}
         <div
           ref={ref}
-          className={`space-y-6 md:space-y-8 animate-on-scroll ${isVisible ? 'is-visible' : ''}`}
+          className={`text-center lg:text-left space-y-6 md:space-y-8 animate-on-scroll ${isVisible ? 'is-visible' : ''}`}
         >
           <p className="font-heading text-[12px] md:text-[14px] tracking-[0.2em] uppercase text-primary/60">
             Common Questions
           </p>
 
-          <h2 className="font-heading text-[36px] md:text-[48px] text-primary leading-tight">
+          <h2 className="font-heading text-[32px] sm:text-[40px] md:text-[48px] text-primary leading-tight mb-8 md:mb-12">
             FAQs
           </h2>
 
-          <div className="pt-4 md:pt-6">
+          <div className="pt-4 md:pt-6 flex justify-center lg:justify-start">
             <div className={`w-full max-w-[280px] md:max-w-sm aspect-[3/4] rounded-t-full overflow-hidden relative opacity-95 animate-on-scroll ${isVisible ? 'is-visible delay-image' : ''}`}>
               <Image
                 src="/img9_neww.webp"
@@ -84,7 +84,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
           {open ? '−' : '+'}
         </span>
 
-        <span className="font-heading text-[22px] md:text-[30px] text-primary leading-tight">
+        <span className="font-heading text-[20px] sm:text-[24px] md:text-[30px] text-primary leading-tight">
           {question}
         </span>
       </button>

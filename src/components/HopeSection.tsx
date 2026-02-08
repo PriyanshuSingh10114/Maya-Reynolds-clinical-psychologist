@@ -5,7 +5,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useParallax } from "@/hooks/useParallax";
 
 export default function HopeSection() {
-  const { ref: scrollRef, isVisible } = useScrollAnimation();
+  const { ref: scrollRef, isVisible } = useScrollAnimation({ threshold: 0, rootMargin: '0px' });
   const { ref: parallaxRef, style: parallaxStyle } = useParallax({ speed: 0.06 });
 
   const challenges = [
@@ -17,10 +17,10 @@ export default function HopeSection() {
   ];
 
   return (
-    <section className="flex flex-col lg:grid lg:grid-cols-2 bg-secondary/30">
+    <section className="flex flex-col lg:grid lg:grid-cols-2 bg-secondary/30" ref={scrollRef}>
 
       {/* Left: Full Bleed Image */}
-      <div className={`parallax-wrapper relative min-h-[40vh] md:min-h-[50vh] lg:min-h-full overflow-hidden animate-on-scroll ${isVisible ? 'is-visible delay-image' : ''}`}>
+      <div className={`parallax-wrapper relative h-[50vh] sm:h-[60vh] md:h-[50vh] lg:h-full overflow-hidden transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div ref={parallaxRef} style={parallaxStyle} className="relative w-full h-full scale-110">
           <Image
             src="/img6_new.webp"
@@ -34,10 +34,9 @@ export default function HopeSection() {
       {/* Right: Text */}
       <div className="bg-secondary p-8 md:p-16 lg:p-24 flex items-center">
         <div
-          ref={scrollRef}
-          className={`max-w-xl space-y-8 md:space-y-12 animate-on-scroll ${isVisible ? 'is-visible' : ''}`}
+          className={`max-w-xl space-y-8 md:space-y-12 transition-all duration-1000 ease-out delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
-          <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl text-primary leading-[1.15] md:leading-[1.1] mb-12 md:mb-16">
+          <h2 className="font-heading text-[32px] sm:text-[40px] md:text-[50px] lg:text-[60px] text-primary leading-[1.2] md:leading-[1.1] mb-8 md:mb-12">
             <span className="italic"> You don’t have to carry this by yourself</span>.
           </h2>
 
@@ -50,11 +49,11 @@ export default function HopeSection() {
 
             <br />
 
-            <ul className="space-y-3 md:space-y-4">
+            <ul className="space-y-4 md:space-y-5">
               {challenges.map((item, i) => (
                 <li key={i} className="flex items-start gap-4">
-                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
-                  <span className="text-base md:text-lg leading-relaxed">{item}</span>
+                  <span className="mt-2.5 w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                  <span className="text-[15px] sm:text-base md:text-lg leading-relaxed">{item}</span>
                 </li>
               ))}
             </ul>

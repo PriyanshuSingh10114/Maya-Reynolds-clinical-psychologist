@@ -10,7 +10,7 @@ export default function BioSection() {
   const { ref: parallaxCircleRef, style: parallaxCircleStyle } = useParallax({ speed: -0.04 });
 
   return (
-    <section className="bg-secondary py-[6.6vmax]">
+    <section className="bg-secondary py-16 md:py-24 lg:py-32">
       <div
         ref={ref}
         className="max-w-[var(--spacing-container)] mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center"
@@ -21,7 +21,7 @@ export default function BioSection() {
           className={`space-y-8 lg:pr-16 animate-on-scroll ${isVisible ? 'is-visible' : ''
             }`}
         >
-          <h2 className="font-heading text-5xl md:text-6xl text-primary">
+          <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-primary mb-8 md:mb-12">
             Hi, I’m Dr. Maya Reynolds.
           </h2>
 
